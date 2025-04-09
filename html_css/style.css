@@ -1,0 +1,48 @@
+.esquerda{
+    background-image: url("back.jpeg");
+    background-repeat: false;
+    background-repeat: no-repeat;
+    padding: 5px;
+    height: 500px; 
+    flex: 1;
+}
+
+.principal{
+    flex: 2;
+}
+
+.direita{
+    background-image: url("1z9gnfq6.png");
+    background-repeat: false;
+    background-repeat: no-repeat;
+    padding: 5px;
+    height: 500px; 
+    flex: 1;
+}
+
+header{
+    background-color: #E28717;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+
+.logo_cabecalho{
+    height: 200px;
+    width: 50%;
+}
+
+div{
+    display: flex;
+}
+
+.navegacao{
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #E28717;
+}
+
+a{
+    color: white;
+    margin-top: -10px;
+}
