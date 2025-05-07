@@ -21,7 +21,6 @@
         for($i = 0; $i < count(value:$notas); $i++){
             echo $notas[$i];
         }
-
        ?>
     </body>
 </html>
