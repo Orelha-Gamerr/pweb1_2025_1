@@ -7,6 +7,12 @@ class db {
     private $password = "";
     private $port = "3306";
     private $dbname ="db_pweb1_2025__blog";
+    private $table_name;
+
+    public function __construct($table_name){
+        $this->table_name = $table_name;
+        return $this->conn();
+    }
 
     function conn(){
 
@@ -28,4 +34,50 @@ class db {
             echo "Erro: ". $e->getMessage();
         }
     }
+
+    public function all(){
+        $conn = $this->conn(); 
+
+        $sql = "SELECT * FROM $this->table_name";
+
+        $st = $conn->prepare( $sql);
+        $st->execute();
+
+        return $st->fetchAll(PDO::FETCH_CLASS);
+    }
+
+    public function store($dados){
+        $conn = $this->conn(); 
+
+        $sql = "INSERT INTO usuario (";
+        $flag = 0;
+        $arrayDados = [];
+        foreach($dados as $campo => $valor){
+            if($flag ==0){
+                $sql .= "$campo";
+            } else {
+                $sql .= ", $campo";
+            }
+            $flag = 1;
+        }
+
+        $sql .=") VALUES (";
+
+        $flag = 0;
+        foreach($dados as $campo => $valor){
+            if($flag ==0){
+                $sql .= "?";
+            } else {
+                $sql .= ", ?";
+            }
+            $flag = 1;
+            $arrayDados[] = $valor;
+        }
+
+        $sql .=") ";
+
+        $st = $conn->prepare(query: $sql);
+        $st->execute($arrayDados);
+    }
+
 }

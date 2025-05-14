@@ -16,23 +16,11 @@
     <?php  
         if(!empty($_REQUEST)){
 
-            $db = new db();
-            $conn = $db->conn(); 
+            $db = new db('usuario');
+            
+            $db->store($_POST);
 
-            $sql = "INSERT INTO usuario (nome,cpf,telefone,email) VALUES (?,?,?,?)";
-
-            $st = $conn->prepare(query: $sql);
-            $st->execute(params: [
-                $_POST['nome'],
-                $_POST['cpf'],
-                $_POST['telefone'],
-                $_POST['email']
-            ]);
-
-            echo $_REQUEST['nome'] . "<br>";
-            echo $_REQUEST['telefone'] . "<br>";
-            echo $_REQUEST['email'] . "<br>";
-            echo $_REQUEST['cpf'] . "<br>";
+            header('location:./UsuarioList.php');
         }
     ?>
 
