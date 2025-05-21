@@ -35,6 +35,8 @@ class db {
         }
     }
 
+
+
     public function all(){
         $conn = $this->conn(); 
 
@@ -45,6 +47,8 @@ class db {
 
         return $st->fetchAll(PDO::FETCH_CLASS);
     }
+
+
 
     public function store($dados){
         $conn = $this->conn(); 
@@ -80,4 +84,73 @@ class db {
         $st->execute($arrayDados);
     }
 
+
+
+    public function update($dados){
+        $id = $dados['id'];
+        $conn = $this->conn(); 
+
+        $sql = "UPDATE $this->table_name SET ";
+        $flag = 0;
+        $arrayDados = [];
+
+        foreach($dados as $campo => $valor){
+            if($flag == 0){
+                $sql .= "$campo = ?";
+            } else {
+                $sql .= ", $campo = ?";
+            }
+            $flag = 1;
+            $arrayDados[] = $valor;
+        }
+
+        $sql .= "WHERE id = $id";
+
+        $st = $conn->prepare(query: $sql);
+        $st->execute($arrayDados);
+    }
+
+
+
+
+    public function find($id){
+
+        $conn = $this->conn(); 
+
+        $sql = "SELECT * FROM $this->table_name WHERE id = ?";
+
+        $st = $conn->prepare( $sql);
+        $st->execute([$id]);
+
+        return $st->fetchObject();
+    }
+
+
+
+
+    public function destroy($id){
+        $conn = $this->conn();
+
+        $sql = "DELETE FROM $this->table_name WHERE id = ?";
+
+        $st = $conn->prepare( $sql);
+        $st->execute([$id]);
+    }
+
+
+
+    public function search($dados){
+
+        $campo = $dados['tipo'];
+        $valor = $dados['valor'];
+
+        $conn = $this->conn();
+
+        $sql = "SELECT * FROM $this->table_name WHERE $campo LIKE ?";
+
+        $st = $conn->prepare( $sql);
+        $st->execute(["%$valor%"]);
+
+        return $st->fetchAll(PDO::FETCH_CLASS);
+    }
 }

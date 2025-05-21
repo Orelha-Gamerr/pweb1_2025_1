@@ -22,6 +22,10 @@
 
             header('location:./UsuarioList.php');
         }
+
+        if(!empty($_GET['id'])){
+            $data = $db->find($_GET['id']);
+        }
     ?>
 
     <body>
