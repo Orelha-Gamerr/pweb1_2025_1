@@ -51,6 +51,7 @@ class db {
 
 
     public function store($dados){
+        unset($dados['id']);
         $conn = $this->conn(); 
 
         $sql = "INSERT INTO usuario (";
