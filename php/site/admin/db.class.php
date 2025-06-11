@@ -6,7 +6,7 @@ class db {
     private $user = "root";
     private $password = "";
     private $port = "3306";
-    private $dbname ="db_pweb1_2025__blog";
+    private $dbname ="db_pweb1_2025_1";
     private $table_name;
 
     public function __construct($table_name){
@@ -54,7 +54,8 @@ class db {
         unset($dados['id']);
         $conn = $this->conn(); 
 
-        $sql = "INSERT INTO usuario (";
+        
+        $sql = "INSERT INTO $this->table_name (";
         $flag = 0;
         $arrayDados = [];
         foreach($dados as $campo => $valor){
@@ -154,4 +155,23 @@ class db {
 
         return $st->fetchAll(PDO::FETCH_CLASS);
     }
+
+    public function login($dados){
+
+        $conn = $this->conn(); 
+
+        $sql = "SELECT * FROM $this->table_name WHERE login = ?";
+
+        $st = $conn->prepare( $sql);
+        $st->execute([$dados['login']]);
+
+        $result = $st->fetchObject();
+
+        if($result && password_verify($dados['senha'], $result->senha)){
+            return $result;
+        } else {
+            return "error";
+        }
+    }
+
 }

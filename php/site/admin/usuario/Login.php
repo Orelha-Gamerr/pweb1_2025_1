@@ -96,7 +96,7 @@
                     </div>
                 <?php } ?>
 
-                <h3>Formulário Usuário</h3>
+                <h3>Login</h3>
                 <!--http://localhost/php/site/admin/UsuarioForm.php-->
                 <form action="" method="post">
                     <input type="hidden" name="id" value="<?= $data->id ?? '' ?>">

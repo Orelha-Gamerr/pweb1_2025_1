@@ -1,19 +1,6 @@
 <?php
     include "../db.class.php";
-?>
-
-<!DOCTYPE html>
-<html lang="pt">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-        <title>Formulario de Usuário</title>
-    </head>
-
-    <?php  
+    include_once "../header.php";
 
     $db = new db('post');
     $dbCategoria = new db('categoria');
@@ -27,13 +14,13 @@
             $data = (object) $_POST;
 
             if(empty(trim($_POST['titulo']))){
-                $errors[] = "<li>O nome é Obrigatório.</li>";
+                $errors[] = "<li>O titulo é Obrigatório.</li>";
             }
             if(empty(trim($_POST['descricao']))){
-                $errors[] = "<li>O email é Obrigatório.</li>";
+                $errors[] = "<li>A descricao é Obrigatória.</li>";
             }
-            if(empty(trim($_POST['categoria']))){
-                $errors[] = "<li>O cpf é Obrigatório.</li>";
+            if(empty(trim($_POST['categoria_id']))){
+                $errors[] = "<li>A categoria é Obrigatória.</li>";
             }
 
 
@@ -72,11 +59,6 @@
 
     ?>
 
-    <body>
-
-        <div class="container mt-5">
-            <div class="row">
-                
                 <!--Sucesso-->
                 <?php if(!empty($success)) {?>
                     <div class="alert alert-success">
@@ -98,7 +80,7 @@
                     </div>
                 <?php } ?>
 
-                <h3>Formulário Usuário</h3>
+                <h3>Formulário Post</h3>
                 <!--http://localhost/php/site/admin/UsuarioForm.php-->
                 <form action="" method="post">
                     <input type="hidden" name="id" value="<?= $data->id ?? '' ?>">
@@ -109,7 +91,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="" class="form-label">Categoria</label>
-                            <select name="status" class="select-control">
+                            <select name="categoria_id" class="select-control">
                                 <?php
                                 foreach($categorias as $categoria) {
                                 ?>
@@ -135,7 +117,6 @@
                                 <option value="publicado">Publicado</option>
                                 <option value="nao_publicado">Não Publicado</option>
                             </select>
-                            <input type="text" name="cpf" value="<?= $data->cpf ?? '' ?>" class="form-control">
                         </div>  
                     </div>
                     <div class="col-md-12">
@@ -153,12 +134,7 @@
                     </div>
                 </form>
             </div>
-        </div>
-        
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
-            crossorigin="anonymous"></script>
-    </body>
-
-</html>
+<?php
+    include_once "../footer.php";
+?>
