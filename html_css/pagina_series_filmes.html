@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Séries e Filmes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        header {
+            background-color: #a2d2ff;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        nav {
+            background-color: #bde0fe;
+            color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        nav a:hover {
+            text-decoration: underline;
+            color: #0077b6;
+        }
+        
+        div {
+            display: flex;
+            min-height: calc(100vh - 180px);
+        }
+        
+        aside {
+            background-color: #b4dbb5;
+            width: 20%;
+            padding: 20px;
+            color: #333;
+        }
+        
+        main {
+            background-color: white;
+            width: 60%;
+            padding: 20px;
+        }
+        
+        footer {
+            background-color: #a2d2ff;
+            color: #333;
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .filme-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #f8f9fa;
+        }
+        
+        .filme-card h3 {
+            color: #0077b6;
+            margin-bottom: 10px;
+        }
+        
+        .serie-lista {
+            margin-top: 20px;
+        }
+        
+        .serie-item {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            background-color: #f8f9fa;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        
+        .categoria {
+            background-color: #d4ffc8;
+            color: #333;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Séries & Filmes Hub</h1>
+        <p>Seu guia para o melhor do entretenimento</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Filmes</a></li>
+            <li><a href="#">Séries</a></li>
+            <li><a href="#">Lançamentos</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </nav>
+    
+    <div>
+        <aside>
+            <h2>Categorias</h2>
+            <div class="categoria">Ação</div>
+            <div class="categoria">Comédia</div>
+            <div class="categoria">Drama</div>
+            <div class="categoria">Ficção Científica</div>
+            <div class="categoria">Terror</div>
+        </aside>
+        
+        <main>
+            <h2>Filmes em Destaque</h2>
+            <div class="filme-card">
+                <h3>Duna: Parte 2</h3>
+                <p>Paul Atreides se une aos Fremen e embarca em uma jornada de vingança contra os conspiradores que destruíram sua família.</p>
+            </div>
+            
+            <div class="filme-card">
+                <h3>Planeta dos Macacos: O Reinado</h3>
+                <p>Anos após o reinado de César, um jovem macaco embarca em uma jornada que o levará a questionar tudo o que lhe foi ensinado sobre o passado.</p>
+            </div>
+            
+            <h2 class="serie-lista">Séries Populares</h2>
+            <div class="serie-item">
+                <h3>The Last of Us</h3>
+                <p>Um sobrevivente endurecido e uma garota de 14 anos podem ser a última esperança da humanidade.</p>
+            </div>
+            
+            <div class="serie-item">
+                <h3>House of the Dragon</h3>
+                <p>Ambientada 200 anos antes de Game of Thrones, conta a história da Casa Targaryen.</p>
+            </div>
+        </main>
+        
+        <aside>
+            <h2>Lançamentos</h2>
+            <p>Veja o que está chegando em breve:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Gladiador 2</li>
+                <li>Deadpool 3</li>
+                <li>The Penguin</li>
+                <li>Bridgerton: Temporada 3</li>
+            </ul>
+            
+            <h2 style="margin-top: 30px;">Avaliações</h2>
+            <p>Filmes mais bem avaliados do mês:</p>
+            <ol style="margin-left: 20px; margin-top: 10px;">
+                <li>Oppenheimer</li>
+                <li>Pobres Criaturas</li>
+                <li>A Zona de Interesse</li>
+            </ol>
+        </aside>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Séries & Filmes Hub. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
